@@ -1,0 +1,17 @@
+@import "reset";
+
+$header-default-height: 72px;
+$main-dark-color: #002f34;
+
+
+
+@import "header";
+
+.container{
+  width: 100%;
+  max-width: 1200px;
+  margin: auto;
+  // background-color: lime;
+}
+
+

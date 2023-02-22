@@ -1,0 +1,31 @@
+.category__products{
+   padding: 1rem;
+   display: flex;
+   flex-direction: column;
+   gap: 30px;
+   font-family: sans-serif;
+
+   
+}
+
+.single__category--product{
+    background-color: #fff;
+    display: flex;
+    border-radius: 10px;
+
+}
+.btn__category{
+    margin-left: 15px;
+    background-color: #002f34;
+    border-radius: 10px;
+    margin-top: 20px;
+    font-size: 16px;
+    padding: 20px;
+
+    a{
+    color: #fff;
+    text-decoration: none;
+    padding: 20px 30px;
+
+    }
+}
