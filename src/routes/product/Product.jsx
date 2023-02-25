@@ -5,8 +5,13 @@ import useFetchData from '../../hooks/useFetchData';
 import Container from "../../utilis/Container";
 
 
+const addStoreCard = (e) =>{
+    console.log(e.target.value);
+}
+
 const Product = () => {
     const productIdData = useParams();
+    // const addCart = useParams()
     const [data, isLoading] = useFetchData(`/products/${productIdData.id}`)
     console.log(data);
     return (
@@ -18,8 +23,8 @@ const Product = () => {
                         <h1>{data.title}</h1>
                         <p>{data.description}</p>
                         <div className='btn__price'>
-                            <strong>${data.price}</strong>
-                            <button className='btn__card--product'>Add to card</button>
+                            <strong>${data.price}</strong> 
+                            <button onClick={addStoreCard} className='btn__card--product'>Add to card</button>
                         </div>
                        
                     </div>

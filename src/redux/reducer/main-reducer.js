@@ -1,17 +1,15 @@
 const initialState  = {
-    email: "",
-    password: ""
+   user: null
 }
 
 const mainReducer = (state=initialState, action) =>{
 
-    console.log(action);
     //get data
 
     switch (action.type) {
-        case "CREATE_EMAIL":
+        case "CREATE_USER":
             return {
-                email: action.email,
+                user: action.user
             }
         default:
             return state

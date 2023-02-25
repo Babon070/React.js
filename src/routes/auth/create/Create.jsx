@@ -9,11 +9,7 @@ const Create = () => {
     const dispatch = useDispatch();
     const history = useHistory()
     const [formData, setFormData] = useState({
-        email: "",
-        password: "",
-        name: "",
-        avatar: ""
-
+        user: "",
     })
 
     console.log(formData);
@@ -32,10 +28,11 @@ const Create = () => {
                     //send to store
                     dispatch(
                         {
-                            email: response.data.email, type: "CREATE_EMAIL",
-                            
+                            user: response.data, 
+                            type: "CREATE_USER",
                         }
                     )
+                    console.log(response.data);
                     history.push("/home")
                     
                 }

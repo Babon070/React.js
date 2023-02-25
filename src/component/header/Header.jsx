@@ -10,11 +10,15 @@ import {useSelector} from "react-redux"
 
 
 const Header = () => {
+  
   const { t } = useTranslation();
-  const storeInfo = useSelector(state => state.email);
-
+  const storeInfo = useSelector(state => state.mainReducer);
   const location = useLocation();
-  return location.pathname.includes("/auth")  ? (
+console.log(storeInfo);
+  
+
+
+  return location.pathname.includes("/auth")  ? ( 
     <></> ) : (
     <header>
       <Container>
@@ -33,21 +37,21 @@ const Header = () => {
               <li onClick={()=> i18n.changeLanguage("uz")} >UZ&nbsp;|</li>
               <li onClick={()=> i18n.changeLanguage("ru")} >&nbsp;RU</li>
             </ul>
-            <Link className="header__icon-link">
+            <Link to='/message' className="header__icon-link">
               <BiMessageRounded />
               {t("header_message")}
             </Link>
-            <Link className="header__icon-heart">
-              <BiHeart />
+            <Link to="/likes" className="header__icon-heart">
+              <BiHeart/>
             </Link>
             <Link to="/auth" className="header__icon-user">
               <BiUser/>
               {
-                 storeInfo ? storeInfo :  t("header_account") 
+                 storeInfo.user?.email ? storeInfo.user?.email :  t("header_account") 
               }
             </Link>
             {/* <RedirectButton  headerButton="/create-new" title="E'lon berish" type="light" ></RedirectButton> */}
-            <Link  className="header__button">
+            <Link to='/new-product'  className="header__button">
                 <span>{t("header_button")}</span>
             </Link>
           </nav>

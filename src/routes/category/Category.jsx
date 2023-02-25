@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, {} from "react";
 import "./Category.scss";
 import useFetchData from "../../hooks/useFetchData";
 import { Link, useParams } from "react-router-dom";
@@ -6,14 +6,18 @@ import Container from "../../utilis/Container";
 
 const Category = () => {
   const categoryIdData = useParams();
-  const [data, isLoading] = useFetchData(
-    `/categories/${categoryIdData.id}/products`
-  );
-
+  const categoryTitle = useParams();
+  const [categoryName, isLoading1] = useFetchData(`/categories/${categoryTitle.id}`)
+  const [data, isLoading] = useFetchData(`/categories/${categoryIdData.id}/products`);
+  
   return (
     <section>
       <Container>
-        <button  className="btn__category"> <Link to="/home" >Orqaga</Link> </button>
+
+        <div className="btn__title">
+            <button  className="btn__category"> <Link to="/home" >Orqaga</Link> </button>
+            <h2>{categoryName.name}</h2>
+        </div>
 
         <div className="category__products">
           {data.map((item) => (

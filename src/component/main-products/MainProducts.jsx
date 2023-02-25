@@ -4,16 +4,23 @@ import Container from "../../utilis/Container";
 import { Link } from 'react-router-dom';
 import {FiHeart} from "react-icons/fi"
 import useFetchData from '../../hooks/useFetchData';
+import { useDispatch, useSelector } from 'react-redux'
+import {BsFillSuitHeartFill} from 'react-icons/bs'
 
 
 
 const MainProducts = () => {
-
+    const dispatch = useDispatch()
+    const { likedProducts } = useSelector(state => state.likeReducer);
     const [data, isLoading] = useFetchData("/products?offset=0&limit=24");
-
     function trimDescription(str){
         return str.split(" ").slice(0, 10).join(" ") + "..."
     }
+
+    function addToLike(product) {
+        dispatch({product, type : "LIKE-PRODUCTS"})
+    }
+
     return (
         <section className='main__products'>
             <h2 className="main__products--title">PREMIUM E`LONLAR</h2>
@@ -35,9 +42,12 @@ const MainProducts = () => {
                                 <div className='product__info'>
                                     <div>
                                         <p>{trimDescription(product.description)}</p>
-                                        <strong>${product.price}</strong>
+                                        <strong >${product.price}</strong>
                                     </div>
-                                    <FiHeart/>
+
+                                    <div className='heart-icon'>
+                                             {likedProducts?.find(p => p?.id === product?.id) ? <BsFillSuitHeartFill style={{color: "red"}} /> : <FiHeart onClick={()=> addToLike(product)} />}
+                                    </div>
                                 </div>
                                 
                             </div>
